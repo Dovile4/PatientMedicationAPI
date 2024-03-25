@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PatientMedicationAPI.Data;
 using PatientMedicationAPI.Services;
-using System.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
