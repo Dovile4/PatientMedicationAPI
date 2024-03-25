@@ -19,7 +19,7 @@ namespace PatientMedicationAPI.Models.Database
         public DateOnly PrescribedDate { get; set; }
         [Required]
         public DateOnly StartDate { get; set; }        
-        public DateOnly EndDate { get; set; }
+        public DateOnly? EndDate { get; set; }
         public string Frequency { get; set; }
         public string Status { get; set; }
 

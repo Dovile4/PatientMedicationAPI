@@ -77,5 +77,23 @@ namespace PatientMedicationAPITests
             Assert.NotNull(response);
             Assert.Equal((int)HttpStatusCode.Created, response.StatusCode);
         }
+
+        [Fact]
+        public async Task Post_Given_RequestIs_Null_Should_Return_400_BadRequest()
+        {
+            // Arrange
+            var controller = new MedicationRequestController(_mockDatabaseService.Object);
+
+            _mockDatabaseService.Setup(s => s.AddMedicationRequest(It.IsAny<MedicationRequest>())).ReturnsAsync(new MedicationRequest());
+
+            // Act
+            var response = await controller.Post(default(MedicationRequestModel));
+
+            // Assert
+            Assert.IsType<BadRequestObjectResult>(response);
+            var result = (BadRequestObjectResult)response;
+            Assert.Equal((int)HttpStatusCode.BadRequest, result.StatusCode);
+            Assert.Equal("Request cannot be null", result.Value);
+        }
     }
 }

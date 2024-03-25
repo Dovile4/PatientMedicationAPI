@@ -26,7 +26,12 @@ namespace PatientMedicationAPI.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return new BadRequestObjectResult(ModelState);
+            }
+
+            if (request == null) 
+            {
+                return new BadRequestObjectResult("Request cannot be null");
             }
 
             var createdMedicationRequest = await _databaseService.AddMedicationRequest(new MedicationRequest 
@@ -38,7 +43,7 @@ namespace PatientMedicationAPI.Controllers
                 Reason = request.Reason,
                 PrescribedDate = request.PrescribedDate,
                 StartDate = request.StartDate,
-                EndDate = request.EndDate,
+                EndDate = request.EndDate.HasValue ? request.EndDate.Value : null,
                 Status = request.Status               
             });
 
@@ -47,7 +52,7 @@ namespace PatientMedicationAPI.Controllers
                 return new CreatedResult($"/api/medicationRequest", createdMedicationRequest.Id);
             }
 
-            return BadRequest();
+            return new BadRequestObjectResult("Could not add medication request");
         }
     }
 }

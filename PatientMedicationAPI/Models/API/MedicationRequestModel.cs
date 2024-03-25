@@ -14,7 +14,7 @@ namespace PatientMedicationAPI.Models.API
         [Required(ErrorMessage = "StartDate is required")]
         public DateOnly StartDate { get; set; }
 
-        public DateOnly EndDate { get; set; }
+        public DateOnly? EndDate { get; set; }
         public string Frequency { get; set; }
 
         [EnumDataType(typeof(StatusEnum))]
