@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PatientMedicationAPI.Models
+namespace PatientMedicationAPI.Models.Database
 {
     public class MedicationRequest
     {
@@ -16,11 +16,11 @@ namespace PatientMedicationAPI.Models
         public string Reason { get; set; }
 
         [Required]
-        public DateTime PrescribedDate { get; set; }
+        public DateOnly PrescribedDate { get; set; }
         [Required]
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public int Frequency { get; set; }
+        public DateOnly StartDate { get; set; }        
+        public DateOnly EndDate { get; set; }
+        public string Frequency { get; set; }
         public string Status { get; set; }
 
         public Patient Patient { get; set; }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PatientMedicationAPI.Models
+namespace PatientMedicationAPI.Models.Database
 {
     public class Medication
     {
@@ -15,5 +15,5 @@ namespace PatientMedicationAPI.Models
 
         public List<MedicationRequest> MedicationRequests { get; set; }
     }
-        
+
 }

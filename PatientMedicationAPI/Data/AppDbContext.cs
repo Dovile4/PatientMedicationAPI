@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PatientMedicationAPI.Models;
+using PatientMedicationAPI.Models.Database;
 
 namespace PatientMedicationAPI.Data
 {
