@@ -18,7 +18,7 @@ namespace PatientMedicationAPITests
             // Arrange
             var controller = new MedicationRequestController(_mockDatabaseService.Object);
 
-            var requestModel = new MedicationRequestModel
+            var requestModel = new AddMedicationRequestModel
             {
                 StartDate = new DateOnly(),
                 EndDate = new DateOnly(),
@@ -55,7 +55,7 @@ namespace PatientMedicationAPITests
             // Arrange
             var controller = new MedicationRequestController(_mockDatabaseService.Object);
 
-            var medicationRequest = new MedicationRequestModel 
+            var medicationRequest = new AddMedicationRequestModel 
             { 
                 StartDate = new DateOnly(),
                 EndDate = new DateOnly(),
@@ -87,7 +87,7 @@ namespace PatientMedicationAPITests
             _mockDatabaseService.Setup(s => s.AddMedicationRequest(It.IsAny<MedicationRequest>())).ReturnsAsync(new MedicationRequest());
 
             // Act
-            var response = await controller.Post(default(MedicationRequestModel));
+            var response = await controller.Post(default(AddMedicationRequestModel));
 
             // Assert
             Assert.IsType<BadRequestObjectResult>(response);
