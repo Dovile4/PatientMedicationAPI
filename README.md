@@ -1,4 +1,4 @@
-# PatientMedicationAPI - Dovile Baranauskaite
+# PatientMedicationAPI - Dovile
 
 Please have a read before running the application.
 
