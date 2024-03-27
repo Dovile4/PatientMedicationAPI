@@ -7,12 +7,12 @@ namespace PatientMedicationAPI.Models.Database
     {
         [Key]
         public int Id { get; set; }
-        [ForeignKey("PatientReference")]
-        public int PatientReference { get; set; }
-        [ForeignKey("ClinicianReference")]
-        public int ClinicianReference { get; set; }
-        [ForeignKey("MedicationReference")]
-        public int MedicationReference { get; set; }
+        [ForeignKey("PatientId")]
+        public int PatientId { get; set; }
+        [ForeignKey("ClinicianId")]
+        public int ClinicianId{ get; set; }
+        [ForeignKey("MedicationId")]
+        public int MedicationId { get; set; }
         public string Reason { get; set; }
 
         [Required]

@@ -41,9 +41,9 @@ namespace PatientMedicationAPITests
             // Assert
             _mockDatabaseService.Verify(
             s => s.AddMedicationRequest(It.Is<MedicationRequest>(mr =>
-                mr.ClinicianReference == requestModel.ClinicianReference &&
-                mr.PatientReference == requestModel.PatientReference &&
-                mr.MedicationReference == requestModel.MedicationReference &&
+                mr.ClinicianId == requestModel.ClinicianReference &&
+                mr.PatientId == requestModel.PatientReference &&
+                mr.MedicationId == requestModel.MedicationReference &&
                 mr.Frequency == requestModel.Frequency &&
                 mr.Reason == requestModel.Reason &&
                 mr.PrescribedDate == requestModel.PrescribedDate &&

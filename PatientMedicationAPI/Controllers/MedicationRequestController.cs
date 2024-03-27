@@ -9,6 +9,7 @@ namespace PatientMedicationAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Produces("application/json")]
     public class MedicationRequestController : ControllerBase
     {
         private readonly IDatabaseService _databaseService;
@@ -18,7 +19,13 @@ namespace PatientMedicationAPI.Controllers
             _databaseService = databaseService;
         }
 
-        // POST api/<MedicationRequestController>
+        /// <summary>
+        /// Adds a new MedicationRequest
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns>Status Code</returns>
+        /// <response code="201">If medication request gets added correctly</response>
+        /// <response code="400">If a problem occurs when trying to add a MedicationRequest</response>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -36,9 +43,9 @@ namespace PatientMedicationAPI.Controllers
 
             var createdMedicationRequest = await _databaseService.AddMedicationRequest(new MedicationRequest 
             { 
-                ClinicianReference = request.ClinicianReference,
-                PatientReference = request.PatientReference,
-                MedicationReference = request.MedicationReference,
+                ClinicianId = request.ClinicianReference,
+                PatientId = request.PatientReference,
+                MedicationId = request.MedicationReference,
                 Frequency = request.Frequency,
                 Reason = request.Reason,
                 PrescribedDate = request.PrescribedDate,
@@ -55,6 +62,14 @@ namespace PatientMedicationAPI.Controllers
             return new BadRequestObjectResult("Could not add medication request");
         }
 
+        /// <summary>
+        /// Gets MedicationRequests for a given Patient ID with some optional filtering
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>A list of Medication Requests</returns>
+        /// <response code="200">If medication requests are found</response>
+        /// <response code="400">If a problem occurs when trying to lookup MedicationRequests</response>
+        /// <response code="404">If no items are found</response>
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
