@@ -10,7 +10,7 @@ namespace PatientMedicationAPI.Models.Database
         public string CodeName { get; set; }
         public string CodeSystem { get; set; }
         public int StrengthValue { get; set; }
-        public int StrengthUnit { get; set; }
+        public string StrengthUnit { get; set; }
         public string Form { get; set; }
 
         public List<MedicationRequest> MedicationRequests { get; set; }

@@ -40,10 +40,10 @@ namespace PatientMedicationAPI.Services
             {
                 var results = from medicationRequest in _dbContext.MedicationRequests
                               join medication in _dbContext.Medications
-                              on medicationRequest.MedicationReference equals medication.Id
+                              on medicationRequest.MedicationId equals medication.Id
                               join clinician in _dbContext.Clinicians
-                              on medicationRequest.ClinicianReference equals clinician.Id
-                              where medicationRequest.PatientReference == patientId &&
+                              on medicationRequest.ClinicianId equals clinician.Id
+                              where medicationRequest.PatientId == patientId &&
                               (status == null || medicationRequest.Status == status) &&
                               (startDate == null || medicationRequest.StartDate >= startDate) &&
                               (endDate == null || medicationRequest.EndDate <= endDate)
@@ -53,11 +53,11 @@ namespace PatientMedicationAPI.Services
                                   Status = medicationRequest.Status,
                                   StartDate = medicationRequest.StartDate,
                                   EndDate = medicationRequest.EndDate,
-                                  MedicationReference = medicationRequest.MedicationReference,
+                                  MedicationReference = medicationRequest.MedicationId,
                                   MedicationCodeName = medication.CodeName,
-                                  ClinicianReference = medicationRequest.ClinicianReference,
+                                  ClinicianReference = medicationRequest.ClinicianId,
                                   Frequency = medicationRequest.Frequency,
-                                  PatientReference = medicationRequest.PatientReference,
+                                  PatientReference = medicationRequest.PatientId,
                                   PrescribedDate = medicationRequest.PrescribedDate,
                                   Reason = medicationRequest.Reason,
                                   CliniciansFirstName = clinician.FirstName,
