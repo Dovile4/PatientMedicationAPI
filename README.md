@@ -24,3 +24,5 @@ If I was to add PATCH API I would have followed the same pattern as for GET and 
 If I spent more time on the task I would have also written more granular unit tests and seen how I could possibly test the DB queries.
 
 Another thing I considered when creating the database migration was Status (of MedicationRequest) and Form (of Medication). These fields have been saved as strings in the given DB tables but I think if I had time I would create separate DB tables just for them. Since there's only a small number of possible values it could be a nice way to separate them and avoid any DB entry errors in case validation did not work.
+
+Docker - I actually didn't have time to look into this but I generated a Dockerfile when solution was created. 
